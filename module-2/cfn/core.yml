@@ -207,6 +207,9 @@ Resources:
           # Allow access to NLB from anywhere on the internet
           - CidrIp: !FindInMap ['SubnetConfig', 'VPC', 'CIDR']
             IpProtocol: -1
+      Tags:
+      - Key: Name
+        Value: from cloudformation
 
   # This is an IAM role which authorizes ECS to manage resources on your
   # account on your behalf, such as updating your load balancer with the
