@@ -6,12 +6,12 @@
   "requiresCompatibilities": [
     "FARGATE"
   ],
-  "executionRoleArn": "arn:aws:iam::623088365179:role/MythicalMysfitsCoreStack-EcsServiceRole-ZEFMQNZBZHWP",
-  "taskRoleArn": "arn:aws:iam::623088365179:role/MythicalMysfitsCoreStack-ECSTaskRole-NID7UHU1VXN1",
+  "executionRoleArn": "arn:aws:iam::708702890538:role/MythicalMysfitsCoreStack-EcsServiceRole-BOO7H0W4ELG1",
+  "taskRoleArn": "arn:aws:iam::708702890538:role/MythicalMysfitsCoreStack-ECSTaskRole-ZYMYVHAZEVW7",
   "containerDefinitions": [
     {
       "name": "MythicalMysfits-Service",
-      "image": "623088365179.dkr.ecr.us-east-1.amazonaws.com/mythicalmysfits/service:latest",
+      "image": "708702890538.dkr.ecr.us-east-1.amazonaws.com/mythicalmysfits/service:latest",
       "portMappings": [
         {
           "containerPort": 8080,

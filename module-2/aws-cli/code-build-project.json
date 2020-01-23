@@ -10,7 +10,7 @@
     "environmentVariables": [
       {
         "name": "AWS_ACCOUNT_ID",
-        "value": "623088365179"
+        "value": "708702890538"
       },
       {
         "name": "AWS_DEFAULT_REGION",
@@ -19,7 +19,7 @@
     ],
     "type": "LINUX_CONTAINER"
   },
-  "serviceRole": "arn:aws:iam::623088365179:role/MythicalMysfitsServiceCodeBuildServiceRole",
+  "serviceRole": "arn:aws:iam::708702890538:role/MythicalMysfitsServiceCodeBuildServiceRole",
   "source": {
     "type": "CODECOMMIT",
     "location": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/MythicalMysfitsService-Repository"

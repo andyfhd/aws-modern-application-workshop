@@ -1,3 +1,5 @@
+# remove credentials from credential manager
+
 aws cloudformation create-stack --stack-name MythicalMysfitsCoreStack --capabilities CAPABILITY_NAMED_IAM --template-body file://module-2/cfn/core.yml   
 
 docker build ./module-2/webapi -t $(aws sts get-caller-identity --query Account --output text).dkr.ecr.$(aws configure get region).amazonaws.com/mythicalmysfits/service:latest
@@ -12,7 +14,7 @@ aws ecs create-cluster --cluster-name MythicalMysfits-Cluster
 
 aws logs create-log-group --log-group-name mythicalmysfits-logs
 
-
+------------------------------------------------------------
 
 cat module-2/aws-cli/task-definition.json \
 | jq ".taskRoleArn |= $(aws cloudformation describe-stacks --stack-name MythicalMysfitsCoreStack | jq '.Stacks[0].Outputs[] | select(.OutputKey == "ECSTaskRole").OutputValue')" \
@@ -46,8 +48,9 @@ cat module-2/aws-cli/service-definition.json \
 aws ecs create-service --cli-input-json file://module-2/aws-cli/service-definition.json
 
 # replace environment.prod.ts
-./module-2/deploy-frontend-scripts/deploy_frontend.sh
+# ./module-2/deploy-frontend-scripts/deploy_frontend.sh
 
+-------------------------------------------------------------
 
 PROJECT_NAME="mythical-mysfits"
 S3_ARTIFACTS_BUCKET_NAME="$PROJECT_NAME-artifacts-$(aws sts get-caller-identity --query Account --output text)"
@@ -87,25 +90,30 @@ cat module-2/aws-cli/ecr-policy.json \
 
 aws ecr set-repository-policy --repository-name mythicalmysfits/service --policy-text file://module-2/aws-cli/ecr-policy.json
 
-rm -drf MythicalMysfitsService-Repository/
-git clone https://git-codecommit.us-east-1.amazonaws.com/v1/repos/MythicalMysfitsService-Repository
-cp -r ./module-2/webapi/* ./MythicalMysfitsService-Repository/
-cd ./MythicalMysfitsService-Repository/
-git add .
-git commit -m "I changed the age of one of the mysfits."
-git push
-cd ../..
-
+# rm -drf MythicalMysfitsService-Repository/
+# git clone https://git-codecommit.us-east-1.amazonaws.com/v1/repos/MythicalMysfitsService-Repository
+# cp -r ./module-2/webapi/* ./MythicalMysfitsService-Repository/
+# cd ./MythicalMysfitsService-Repository/
+# git add .
+# git commit -m "I changed the age of one of the mysfits."
+# git push
+# cd ..
 
 
 aws dynamodb create-table --cli-input-json file://module-3/aws-cli/dynamodb-table.json
 
-aws dynamodb batch-write-item --request-items file://./module-3/aws-cli/populate-dynamodb.json
-
 cp -r ./module-3/webapi/* ./MythicalMysfitsService-Repository/
+
+cd ./MythicalMysfitsService-Repository/
+git add .
+git commit -m "dynamo update"
+git push
+cd ..
+
 
 ./module-3/deploy-frontend-scripts/deploy_frontend.sh
 
+aws dynamodb batch-write-item --request-items file://./module-3/aws-cli/populate-dynamodb.json
 
 {   
     "Stacks": [

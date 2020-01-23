@@ -5,8 +5,8 @@
       "Effect": "Allow",
       "Principal": {
         "AWS": [
-          "arn:aws:iam::623088365179:role/MythicalMysfitsServiceCodeBuildServiceRole",
-          "arn:aws:iam::623088365179:role/MythicalMysfitsServiceCodePipelineServiceRole"
+          "arn:aws:iam::708702890538:role/MythicalMysfitsServiceCodeBuildServiceRole",
+          "arn:aws:iam::708702890538:role/MythicalMysfitsServiceCodePipelineServiceRole"
         ]
       },
       "Action": [
@@ -15,8 +15,8 @@
         "s3:GetBucketVersioning"
       ],
       "Resource": [
-        "arn:aws:s3:::mythical-mysfits-artifacts-623088365179/*",
-        "arn:aws:s3:::mythical-mysfits-artifacts-623088365179"
+        "arn:aws:s3:::mythical-mysfits-artifacts-708702890538/*",
+        "arn:aws:s3:::mythical-mysfits-artifacts-708702890538"
       ]
     },
     {
@@ -24,14 +24,14 @@
       "Effect": "Allow",
       "Principal": {
         "AWS": [
-          "arn:aws:iam::623088365179:role/MythicalMysfitsServiceCodeBuildServiceRole",
-          "arn:aws:iam::623088365179:role/MythicalMysfitsServiceCodePipelineServiceRole"
+          "arn:aws:iam::708702890538:role/MythicalMysfitsServiceCodeBuildServiceRole",
+          "arn:aws:iam::708702890538:role/MythicalMysfitsServiceCodePipelineServiceRole"
         ]
       },
       "Action": "s3:PutObject",
       "Resource": [
-        "arn:aws:s3:::mythical-mysfits-artifacts-623088365179/*",
-        "arn:aws:s3:::mythical-mysfits-artifacts-623088365179"
+        "arn:aws:s3:::mythical-mysfits-artifacts-708702890538/*",
+        "arn:aws:s3:::mythical-mysfits-artifacts-708702890538"
       ]
     }
   ]
